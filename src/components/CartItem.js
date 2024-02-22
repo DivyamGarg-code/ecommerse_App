@@ -31,7 +31,7 @@ function CartItem({ productInfo }) {
     };
     
     return (
-        <div className='flex flex-row justify-between items-center w-full p-3 shadow-lg rounded-md'>
+        <div className='flex flex-row flex-wrap gap-2 justify-between items-center w-full p-3 shadow-lg rounded-md'>
             <div className='flex flex-row items-center gap-2'>
                 <img className="h-12 w-12 object-cover" src={image[0].url} alt="error" />
                 <div className='flex flex-col gap-1'>

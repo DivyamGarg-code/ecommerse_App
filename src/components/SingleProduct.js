@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { addToCart, updateCart } from '../utils/cartSlice';
 
@@ -66,7 +66,7 @@ function SingleProduct() {
           <span>{productCount}</span>
           <div onClick={increment} className='px-2 py-1 rounded-md bg-gray-300 hover:bg-gray-400 font-bold cursor-pointer'>+</div>
         </div>
-        <button className='p-2 rounded-md text-white font-semibold bg-blue-500 hover:bg-blue-600' onClick={addItemsToCart}>ADD TO CART</button>
+        <Link to="/cart"><button className='p-2 rounded-md text-white font-semibold bg-blue-500 hover:bg-blue-600' onClick={addItemsToCart}>ADD TO CART</button></Link>
       </div>
     </div>
   )

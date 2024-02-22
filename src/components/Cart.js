@@ -11,7 +11,7 @@ function Cart() {
   // const totalItemCount=useSelector((store)=>store.cart.totalItemCount);
   // const cartItems=useSelector((store)=>store.cart.cartItems);
   return (
-    <div className='max-w-[600px] w-full flex flex-col gap-2'>
+    <div className='max-w-[600px] w-full flex flex-col gap-2 px-4'>
       <span>Cart : <b>{totalItemCount} Items</b></span>
       <div className='w-full border border-black'></div>
       {Object.values(cartItems).map((productInfo)=>{
