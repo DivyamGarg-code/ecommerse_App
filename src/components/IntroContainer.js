@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function IntroContainer({data}) {
     const {title,name,content}=data;
   return (
-    <div className='flex flex-row items-center justify-center flex-wrap gap-[80px]'>
+    <div className='flex flex-row items-center justify-center flex-wrap gap-[80px] px-3'>
         <div className='flex flex-col gap-3 max-w-[400px] items-center text-center md:items-start md:text-start'>
             <span className='text-xl text-gray-600'>{title}</span>
             <span className='font-bold text-3xl'>{name}</span>
