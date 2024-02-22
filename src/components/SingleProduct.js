@@ -11,12 +11,37 @@ function SingleProduct() {
   const queryParams = new URLSearchParams(search);
   const id = queryParams.get('id');
   const [productInfo, setProductInfo] = useState(null)
-  const cnt=cartItems.hasOwnProperty(id)?cartItems[id]["productCount"]:1;
+  const cnt = cartItems.hasOwnProperty(id) ? cartItems[id]["productCount"] : 1;
   const [productCount, setProductCount] = useState(cnt);
   const [loading, setLoading] = useState(!cartItems.hasOwnProperty(id));
+  const getProductData = async (id) => {
+    const data = await fetch(`https://api.pujakaitem.com/api/products?id=${id}`);
+    const json = await data.json();
+    setLoading(false);
+    setProductInfo(json);
+    console.log("API called");
+  }
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top when component mounts
+    if (id && !cartItems.hasOwnProperty(id)) {
+      getProductData(id);
+    }
+  }, [id]);
+  if (loading === true) {
+    return <div>Loading...</div>
+  }
+  const { name, price, company, description, image, category,stock } = cartItems.hasOwnProperty(id) ? cartItems[id] : productInfo;
+  const addItemsToCart = () => {
+    if (cartItems.hasOwnProperty(id)) { // Update
+      dispatch(updateCart([id, productCount]));
+    } else { // Add
+      productInfo["productCount"] = productCount;
+      dispatch(addToCart([id, productInfo]));
+    }
+  }
   const increment = () => {
-    if (productCount === 5) {
-      alert("Max availability in Stock : 5")
+    if (productCount === stock) {
+      alert(`Max availability in Stock : ${stock}`)
     } else {
       setProductCount(prevCount => prevCount + 1);
     }
@@ -27,31 +52,6 @@ function SingleProduct() {
       setProductCount(prevCount => prevCount - 1);
     }
   };
-  const getProductData = async (id) => {
-    const data = await fetch(`https://api.pujakaitem.com/api/products?id=${id}`);
-    const json = await data.json();
-    setLoading(false);
-    setProductInfo(json);
-    console.log("API called");
-  }
-  useEffect(() => {
-    window.scrollTo(0, 0); // Scroll to the top when component mounts
-    if(id && !cartItems.hasOwnProperty(id)) {
-      getProductData(id);
-    }
-  }, [id]);
-  if (loading === true) {
-    return <div>Loading...</div>
-  }
-  const { name, price, company, description, image, category } =cartItems.hasOwnProperty(id)?cartItems[id]:productInfo;
-  const addItemsToCart = () => {
-    if (cartItems.hasOwnProperty(id)) { // Update
-      dispatch(updateCart([id, productCount]));
-    } else { // Add
-      productInfo["productCount"] = productCount;
-      dispatch(addToCart([id, productInfo]));
-    }
-  }
   return (
     <div className='flex flex-row gap-10 justify-center items-center flex-wrap'>
       <img className="max-w-[500px] w-full" src={image[0].url} alt="error" />

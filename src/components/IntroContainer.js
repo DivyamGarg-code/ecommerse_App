@@ -1,5 +1,6 @@
 import React from 'react'
 import shopping from "../images/shopping.png"
+import { Link } from 'react-router-dom';
 function IntroContainer({data}) {
     const {title,name,content}=data;
   return (
@@ -8,7 +9,7 @@ function IntroContainer({data}) {
             <span className='text-xl text-gray-600'>{title}</span>
             <span className='font-bold text-3xl'>{name}</span>
             <span className='text-gray-600 line-clamp-4'>{content}</span>
-            <button className='p-2 font-bold bg-blue-400 hover:bg-blue-500 hover:shadow-md'>SHOP NOW</button>
+            <Link to="/products"><button className='p-2 font-bold bg-blue-400 hover:bg-blue-500 hover:shadow-md'>SHOP NOW</button></Link>
         </div>
         <img className="w-[350px]  hover:scale-105 transition-transform duration-300" src={shopping} alt="error" />
     </div>

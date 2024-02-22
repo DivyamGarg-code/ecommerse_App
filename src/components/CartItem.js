@@ -8,13 +8,13 @@ import {useDispatch} from 'react-redux';
 function CartItem({ productInfo }) {
     // console.log("dsfkl-> ",productInfo);
     const dispatch=useDispatch();
-    const { id,name, price, image, productCount } = productInfo;
+    const { id,name, price, image, productCount,stock } = productInfo;
     console.log(name, price, image, productCount);
     const [itemCount, setItemCount] = useState(productCount);
     const increment = (e) => {
         e.stopPropagation();
-        if (itemCount === 5) {
-            alert("Max availability in Stock : 5")
+        if (itemCount === stock) {
+            alert(`Max availability in Stock : ${stock}`)
         } else {
             setItemCount(prevCount => prevCount + 1);
             // console.log("After changing ",itemCount);
