@@ -35,6 +35,7 @@ function SingleProduct() {
     console.log("API called");
   }
   useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top when component mounts
     if(id && !cartItems.hasOwnProperty(id)) {
       getProductData(id);
     }

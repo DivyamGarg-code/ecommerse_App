@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, {useEffect } from 'react'
 import CartItem from './CartItem'
 import { Link } from 'react-router-dom'
 import {useDispatch,useSelector} from 'react-redux'
@@ -6,8 +6,10 @@ import { clearCart } from '../utils/cartSlice';
 
 function Cart() {
   const dispatch=useDispatch();
-
   const {cartItems,totalItemCount,totalAmount}=useSelector((store)=>store.cart);
+  useEffect(()=>{
+    window.scrollTo(0, 0); // Scroll to the top when component mounts
+  },[])
   // const totalItemCount=useSelector((store)=>store.cart.totalItemCount);
   // const cartItems=useSelector((store)=>store.cart.cartItems);
   return (
