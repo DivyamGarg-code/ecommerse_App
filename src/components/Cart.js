@@ -18,8 +18,6 @@ function Cart() {
       <div className='w-full border border-black'></div>
       {Object.values(cartItems).map((productInfo)=>{
         return <CartItem key={productInfo.id} productInfo={productInfo}/>
-        // Under process............
-        // return <Link to={`/singleProduct?id=${productInfo.id}`}><CartItem key={productInfo.id} productInfo={productInfo}/></Link>
       })}
       <div className='w-full flex flex-row items-center justify-between flex-wrap'>
         <Link to="/products"><button className='p-2 rounded-md bg-blue-400 hover:bg-blue-500 font-semibold mt-4'>Continue Shopping</button></Link>

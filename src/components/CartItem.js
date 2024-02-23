@@ -4,10 +4,11 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { deleteFromCart, updateCart } from '../utils/cartSlice';
 import {useDispatch} from 'react-redux';
+import {useNavigate} from 'react-router-dom'
 
 function CartItem({ productInfo }) {
-    // console.log("dsfkl-> ",productInfo);
     const dispatch=useDispatch();
+    const navigate=useNavigate();
     const { id,name, price, image, productCount,stock } = productInfo;
     console.log(name, price, image, productCount);
     const [itemCount, setItemCount] = useState(productCount);
@@ -31,7 +32,7 @@ function CartItem({ productInfo }) {
     };
     
     return (
-        <div className='flex flex-row flex-wrap gap-2 justify-between items-center w-full p-3 shadow-lg rounded-md'>
+        <div className='flex flex-row flex-wrap gap-2 justify-between items-center w-full p-3 shadow-lg rounded-md cursor-pointer' onClick={()=>navigate(`/singleProduct?id=${id}`)}>
             <div className='flex flex-row items-center gap-2'>
                 <img className="h-12 w-12 object-cover" src={image[0].url} alt="error" />
                 <div className='flex flex-col gap-1'>
