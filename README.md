@@ -21,11 +21,10 @@
     - Cart
 
 # Libraries
-
-- React Router DOM : for managing routes
-- Redux Toolkit : for state management
-- Formspree : for managing emails in contact section
-- FontAwesome : for adding icons
+    - React Router DOM : for managing routes
+    - Redux Toolkit : for state management
+    - Formspree : for managing emails in contact section
+    - FontAwesome : for adding icons
 
 # Features Implemented
 - Homepage:
