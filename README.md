@@ -42,3 +42,8 @@
 - Cart/Wishlist:
     - Display of cart and wishlist.
     - Implemented basic functionalities like adding/removing items, updating quantities, and clearing the cart/wishlist.
+
+Upcoming Features [To be added soon...]
+- Login 
+- Redux Persistant State
+- Payment Gateway
